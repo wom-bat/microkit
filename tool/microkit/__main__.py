@@ -1112,6 +1112,7 @@ def build_system(
 
     # First we need to find all the requested pages and sorted them
     fixed_pages = []
+    pages_track = {}
     for mr in all_mrs: #system.memory_regions:
         if mr.phys_addr is None:
             continue
@@ -1119,7 +1120,12 @@ def build_system(
         for idx in range(mr.page_count):
             fixed_pages.append((phys_addr, mr))
             phys_addr += mr_page_bytes(mr)
+            if phys_addr in pages_track:
+                print("mr %s overlaps with %s" % (pages_track[phys_addr], mr.name))
+            pages_track[phys_addr] = mr.name
 
+    # If there was an overlap detected above, the sort attempt will
+    # crash
     fixed_pages.sort()
 
     # FIXME: At this point we can recombine them into
