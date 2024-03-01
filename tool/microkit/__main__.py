@@ -481,8 +481,6 @@ class InitSystem:
             if phys_address in ut:
                 break
         else:
-            for ut in self._device_untyped:
-                print(ut)
             raise Exception(f"{phys_address=:x} not in any device untyped")
 
         if phys_address < ut.watermark:
@@ -1121,11 +1119,9 @@ def build_system(
             fixed_pages.append((phys_addr, mr))
             phys_addr += mr_page_bytes(mr)
             if phys_addr in pages_track:
-                print("mr %s overlaps with %s" % (pages_track[phys_addr], mr.name))
+                raise UserError("Memory region %s overlaps with %s" % (pages_track[phys_addr], mr.name))
             pages_track[phys_addr] = mr.name
 
-    # If there was an overlap detected above, the sort attempt will
-    # crash
     fixed_pages.sort()
 
     # FIXME: At this point we can recombine them into
