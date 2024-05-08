@@ -304,6 +304,7 @@ SUPPORTED_BOARDS = (
             "KernelArmHypervisorSupport": True,
             "KernelArmVtimerUpdateVOffset": False,
             "KernelIRQReporting": False,
+            "KernelRetypeFanOutLimit": 512,
         },
         examples = {}
     ),
