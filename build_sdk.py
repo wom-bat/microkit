@@ -381,17 +381,17 @@ SUPPORTED_BOARDS = (
     #         "hello": Path("example/spike/hello")
     #     }
     # ),
-    # BoardInfo(
-    #     name="hifive_unleashed",
-    #     arch=BoardArch.RISCV64,
-    #     gcc_flags = "",
-    #     loader_link_address=0x80200000,
-    #     kernel_options = {
-    #         "KernelIsMCS": True,
-    #         "KernelPlatform": "hifive",
-    #     },
-    #     examples = {}
-    # ),
+    BoardInfo(
+        name="hifive_unleashed",
+        arch=BoardArch.RISCV64,
+        gcc_flags = "",
+        loader_link_address=0x80200000,
+        kernel_options = {
+            "KernelIsMCS": True,
+            "KernelPlatform": "hifive",
+        },
+        examples = {}
+    ),
     BoardInfo(
         name="qemu_riscv_virt",
         arch=BoardArch.RISCV64,
