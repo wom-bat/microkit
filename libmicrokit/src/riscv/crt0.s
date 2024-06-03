@@ -1,4 +1,5 @@
 .extern main
+.extern __global_pointer$
 
 .section ".text.start"
 
