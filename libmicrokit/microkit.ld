@@ -40,12 +40,15 @@ SECTIONS
     {
         _data = .;
         *(.data)
+	*(.srodata)
+	*(.sdata)
         _data_end = .;
     } :data
 
     .bss :
     {
         _bss = .;
+	*(.sbss)
         *(.bss)
         *(COMMON)
         . = ALIGN(4);
