@@ -23,15 +23,18 @@ SECTIONS
 
     .data :
     {
-        __global_pointer$ = . + 0x800;
         _data = .;
-        *(.data)
-        _data_end = .;
+        *(.data) 
+        __global_pointer$ = . + 0x800;
+	*(.srodata)
+	*(.sdata)
+       _data_end = .;
     } :all
 
     .bss :
     {
         _bss = .;
+	*(.sbss)
         *(.bss)
         *(COMMON)
         . = ALIGN(4);

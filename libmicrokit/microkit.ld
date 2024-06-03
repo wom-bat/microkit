@@ -40,7 +40,8 @@ SECTIONS
     {
         _data = .;
         *(.data)
-	__global_pointer$ = . + 0x800
+	. = ALIGN(8);
+	__global_pointer$ = . + 0x800;
 	*(.srodata)
 	*(.sdata)
         _data_end = .;
